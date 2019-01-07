@@ -148,6 +148,7 @@ const actors = [{
   }]
 }];
 
+//Step1
 function getObj(id) {
   var i = 0;
 for (i = 0; i < bars.length; i++) {
@@ -174,7 +175,29 @@ function setPrice()
   }
 }
 
+//Step2
+function decreaing()
+{
+  for(var i = 0; i < events.length; i++)
+  {
+    if(events[i].persons >= 10 && events[i].persons < 20)
+    {
+      events[i].price -= events[i].price * 0.1;
+    }
+    else if(events[i].persons >= 20 && events[i].persons < 60)
+    {
+      events[i].price -= events[i].price * 0.3;
+    }
+    else if(events[i].persons >= 60)
+    {
+      events[i].price -= events[i].price * 0.5;
+    }
+  }
+}
+
+
 console.log(bars);
 console.log(events);
 setPrice();
+decreaing();
 console.log(actors);
