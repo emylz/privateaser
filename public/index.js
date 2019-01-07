@@ -235,13 +235,13 @@ function pay()
   for(var i = 0; i < actors.length; i++)
   {
     var obj = getEvent(actors[i].eventId);
-    for(var j = 0; j < actors.payment.length; j++)
+    for(var j = 0; j < actors[i].payment.length; j++)
     {
-        if(actors.payment[i].localCompare("booker")==0)actors.payment[i].amount=obj.price;
-        if(actors.payment[i].localCompare("bar")==0)actors.payment[i].amount= obj.price * 0.7;
-        if(actors.payment[i].localCompare("insurance")==0)actors.payment[i].amount = obj.commission.insurance;
-        if(actors.payment[i].localCompare("treasury")==0)actors.payment[i].amount = obj.commission.treasury;
-        if(actors.payment[i].localCompare("privateaser")==0)actors.payment[i].amount = obj.commission.privateaser;
+       actors[i].payment[0].amount=obj.price;
+       actors[i].payment[1].amount= obj.price * 0.7;
+       actors[i].payment[2].amount = obj.commission.insurance;
+       actors[i].payment[3].amount = obj.commission.treasury;
+       actors[i].payment[4].amount = obj.commission.privateaser;
     }
   }
 }
@@ -252,5 +252,6 @@ setPrice();
 decreasing();
 setCommision();
 setDeductible();
+pay();
 console.log(events);
 console.log(actors);
