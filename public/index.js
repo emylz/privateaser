@@ -235,11 +235,21 @@ function pay()
   for(var i = 0; i < actors.length; i++)
   {
     var obj = getEvent(actors[i].eventId);
-    actors[i].payment[0].amount=obj.price;
-    actors[i].payment[1].amount= obj.price * 0.7;
-    actors[i].payment[2].amount = obj.commission.insurance;
-    actors[i].payment[3].amount = obj.commission.treasury;
-    actors[i].payment[4].amount = obj.commission.privateaser;
+    if(obj != null)
+    {
+      actors[i].payment[0].amount=obj.price;
+      var price = obj.price;
+      if(obj.options.deductibleReduction == true)
+      {
+          actors[i].payment[4].amount += obj.persons;
+          price -= obj.persons;
+      }
+      actors[i].payment[1].amount= price * 0.7;
+      actors[i].payment[2].amount = obj.commission.insurance;
+      actors[i].payment[3].amount = obj.commission.treasury;
+      actors[i].payment[4].amount += obj.commission.privateaser;
+
+    }
   }
 }
 
