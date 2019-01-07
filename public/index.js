@@ -176,7 +176,7 @@ function setPrice()
 }
 
 //Step2
-function decreaing()
+function decreasing()
 {
   for(var i = 0; i < events.length; i++)
   {
@@ -195,9 +195,23 @@ function decreaing()
   }
 }
 
+//Step3
+function setCommision()
+{
+    for(var i = 0; i < events.length; i++)
+    {
+       var commission = events[i].price * 0.3;
+       events[i].commission.insurance = commission * 0.5;
+       commission = commission * 0.5;
+       events[i].commission.treasury = 1 * events[i].persons;
+       events[i].commission.privateaser = commission - events[i].commission.treasury;
+    }
+}
+
 
 console.log(bars);
-console.log(events);
 setPrice();
-decreaing();
+decreasing();
+setCommision();
+console.log(events);
 console.log(actors);
