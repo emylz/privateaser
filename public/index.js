@@ -203,9 +203,21 @@ function setCommision()
        var commission = events[i].price * 0.3;
        events[i].commission.insurance = commission * 0.5;
        commission = commission * 0.5;
-       events[i].commission.treasury = 1 * events[i].persons;
+       events[i].commission.treasury = events[i].persons;
        events[i].commission.privateaser = commission - events[i].commission.treasury;
     }
+}
+
+//Step4
+function setDeductible()
+{
+  for(var i = 0; i < events.length; i++)
+  {
+    if(events[i].options.deductibleReduction == true)
+    {
+      events[i].price += events[i].persons;
+    }
+  }
 }
 
 
@@ -213,5 +225,6 @@ console.log(bars);
 setPrice();
 decreasing();
 setCommision();
+setDeductible();
 console.log(events);
 console.log(actors);
