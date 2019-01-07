@@ -220,6 +220,32 @@ function setDeductible()
   }
 }
 
+//Step5
+function getEvent(id)
+{
+  for(var i = 0; i < events.length; i++)
+  {
+    if(id == events[i].id) return events[i];
+  }
+  return null;
+}
+
+function pay()
+{
+  for(var i = 0; i < actors.length; i++)
+  {
+    var obj = getEvent(actors[i].eventId);
+    for(var j = 0; j < actors.payment.length; j++)
+    {
+        if(actors.payment[i].localCompare("booker")==0)actors.payment[i].amount=obj.price;
+        if(actors.payment[i].localCompare("bar")==0)actors.payment[i].amount= obj.price * 0.7;
+        if(actors.payment[i].localCompare("insurance")==0)actors.payment[i].amount = obj.commission.insurance;
+        if(actors.payment[i].localCompare("treasury")==0)actors.payment[i].amount = obj.commission.treasury;
+        if(actors.payment[i].localCompare("privateaser")==0)actors.payment[i].amount = obj.commission.privateaser;
+    }
+  }
+}
+
 
 console.log(bars);
 setPrice();
