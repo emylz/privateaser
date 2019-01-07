@@ -235,14 +235,11 @@ function pay()
   for(var i = 0; i < actors.length; i++)
   {
     var obj = getEvent(actors[i].eventId);
-    for(var j = 0; j < actors[i].payment.length; j++)
-    {
-       actors[i].payment[0].amount=obj.price;
-       actors[i].payment[1].amount= obj.price * 0.7;
-       actors[i].payment[2].amount = obj.commission.insurance;
-       actors[i].payment[3].amount = obj.commission.treasury;
-       actors[i].payment[4].amount = obj.commission.privateaser;
-    }
+    actors[i].payment[0].amount=obj.price;
+    actors[i].payment[1].amount= obj.price * 0.7;
+    actors[i].payment[2].amount = obj.commission.insurance;
+    actors[i].payment[3].amount = obj.commission.treasury;
+    actors[i].payment[4].amount = obj.commission.privateaser;
   }
 }
 
